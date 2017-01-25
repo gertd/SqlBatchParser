@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlBatchReader", "SqlBatchReader\SqlBatchReader.csproj", "{0CAC08C6-CBC2-4FEF-B38D-B90313713793}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlBatchReaderCmd", "SqlBatchReaderCmd\SqlBatchReaderCmd.csproj", "{CB6C0765-6009-4DD2-A370-A7AF2429C5F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlBatchReaderTest", "SqlBatchReaderTest\SqlBatchReaderTest.csproj", "{45D85060-099A-44C7-A1C8-FA9B9C46C51D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1140B25B-16EB-44D4-91B4-9A40141187EE}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CAC08C6-CBC2-4FEF-B38D-B90313713793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CAC08C6-CBC2-4FEF-B38D-B90313713793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CAC08C6-CBC2-4FEF-B38D-B90313713793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CAC08C6-CBC2-4FEF-B38D-B90313713793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB6C0765-6009-4DD2-A370-A7AF2429C5F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB6C0765-6009-4DD2-A370-A7AF2429C5F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB6C0765-6009-4DD2-A370-A7AF2429C5F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB6C0765-6009-4DD2-A370-A7AF2429C5F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45D85060-099A-44C7-A1C8-FA9B9C46C51D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45D85060-099A-44C7-A1C8-FA9B9C46C51D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45D85060-099A-44C7-A1C8-FA9B9C46C51D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45D85060-099A-44C7-A1C8-FA9B9C46C51D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
