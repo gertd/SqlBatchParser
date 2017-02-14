@@ -174,6 +174,7 @@ namespace SqlBatchParser
                         var lc = lineChanges.Pop();
                         line = line.Remove(lc.Offset, lc.Length);
                     }
+                    startOffsetBlockComment = 0;
                 }
 
                 if (Config.OmitEmptyLines && line.IsEmpty()) continue;
