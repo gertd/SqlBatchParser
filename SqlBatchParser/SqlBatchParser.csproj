@@ -4,17 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CB6C0765-6009-4DD2-A370-A7AF2429C5F3}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{0CAC08C6-CBC2-4FEF-B38D-B90313713793}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SqlBatchReaderCmd</RootNamespace>
-    <AssemblyName>SqlBatchReaderCmd</AssemblyName>
+    <RootNamespace>SqlBatchParser</RootNamespace>
+    <AssemblyName>SqlBatchParser</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,9 +22,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -50,27 +50,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppArgs.cs" />
-    <Compile Include="Common\CommandLine.cs" />
-    <Compile Include="Common\Helper.cs" />
-    <Compile Include="Program.cs" />
+    <None Include="packages.config" />
+    <None Include="SqlBatchHelper.cs.pp" />
+    <Compile Include="SqlBatchHelper.cs" />
+    <None Include="SqlBatchLineChange.cs.pp" />
+    <Compile Include="SqlBatchLineChange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="SqlBatchReader.cs.pp" />
+    <Compile Include="SqlBatchReader.cs" />
+    <None Include="SqlBatchReaderConfig.cs.pp" />
+    <Compile Include="SqlBatchReaderConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SqlBatchReader\SqlBatchReader.csproj">
-      <Project>{0cac08c6-cbc2-4fef-b38d-b90313713793}</Project>
-      <Name>SqlBatchReader</Name>
-    </ProjectReference>
+    <None Include="SqlBatchParser.nuspec" />
+    <None Include="SqlBatchParser.Sources.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+  <Target Name="AfterBuild">
+    <Exec Command="nuget pack SqlBatchParser.nuspec -Properties Id=SqlBatchParser -Properties Configuration=$(Configuration) -OutputDirectory c:\src\nuget -Version 0.0.1" />
+    <Exec Command="nuget pack SqlBatchParser.Sources.nuspec -Properties Id=SqlBatchParser -Properties Configuration=$(Configuration) -OutputDirectory c:\src\nuget -Version 0.0.1" />
+  </Target>
+  <Import Project="..\packages\MSBuild.Extension.Pack.1.9.0\build\net40\MSBuild.Extension.Pack.targets" Condition="Exists('..\packages\MSBuild.Extension.Pack.1.9.0\build\net40\MSBuild.Extension.Pack.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MSBuild.Extension.Pack.1.9.0\build\net40\MSBuild.Extension.Pack.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.Extension.Pack.1.9.0\build\net40\MSBuild.Extension.Pack.targets'))" />
+  </Target>
 </Project>

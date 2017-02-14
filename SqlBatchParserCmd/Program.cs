@@ -1,9 +1,9 @@
-﻿using SqlBatchReader;
-using SqlBatchReaderCmd.Common;
+﻿using SqlBatchParser;
+using SqlBatchParserCmd.Common;
 using System;
 using System.IO;
 
-namespace SqlBatchReaderCmd
+namespace SqlBatchParserCmd
 {
     class Program
     {
@@ -41,7 +41,7 @@ namespace SqlBatchReaderCmd
                     OmitEmptyLines = parsedArgs.OmitEmptyLines
                 };
 
-                using (var batchReader = new SqlBatchReader.SqlBatchReader(parsedArgs.InputFile, config))
+                using (var batchReader = new SqlBatchParser.SqlBatchReader(parsedArgs.InputFile, config))
                 {
                     var counter = 0;
                     foreach (var batch in batchReader.Batches())

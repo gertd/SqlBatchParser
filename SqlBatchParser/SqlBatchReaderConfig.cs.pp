@@ -1,4 +1,4 @@
-﻿namespace SqlBatchReader
+﻿namespace $rootnamespace$.SqlBatchParser
 {
     public class SqlBatchReaderConfig
     {

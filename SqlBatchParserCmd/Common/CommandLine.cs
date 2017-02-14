@@ -215,7 +215,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace SqlBatchReaderCmd.Common
+namespace SqlBatchParserCmd.Common
 {
     /// <summary>
     /// Used to control parsing of command line arguments.

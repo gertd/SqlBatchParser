@@ -1,14 +1,13 @@
-using SqlBatchReader.Common;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-
-namespace SqlBatchReader
+namespace SqlBatchParser
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Text.RegularExpressions;
+
     public class SqlBatchReader : StreamReader
     {
         /// <summary>
@@ -96,7 +95,12 @@ namespace SqlBatchReader
                         if (blockCommentDepth > 0) continue;
 
                         insideInlineComment = true;
-                        lineChanges.Push(new SqlBatchLineChange(match.Index, line.Length - match.Index));
+
+                        lineChanges.Push(new SqlBatchLineChange()
+                        {
+                            Offset = match.Index,
+                            Length = line.Length - match.Index
+                        });
                     }
                     else if (match.Groups["blockstart"].Success)
                     {
@@ -115,7 +119,11 @@ namespace SqlBatchReader
 
                         if (blockCommentDepth == 0)
                         {
-                            lineChanges.Push(new SqlBatchLineChange(startOffsetBlockComment, (match.Index + match.Length) - startOffsetBlockComment));
+                            lineChanges.Push(new SqlBatchLineChange()
+                            {
+                                Offset = startOffsetBlockComment,
+                                Length = (match.Index + match.Length) - startOffsetBlockComment
+                            });
                         }
                     }
                     else if (match.Groups["lbracket"].Success)
@@ -154,8 +162,11 @@ namespace SqlBatchReader
                 {
                     if (blockCommentDepth > 0)
                     {
-                        lineChanges.Push(new SqlBatchLineChange(startOffsetBlockComment, line.Length - startOffsetBlockComment));
-                        startOffsetBlockComment = 0;
+                        lineChanges.Push(new SqlBatchLineChange()
+                        {
+                            Offset = startOffsetBlockComment,
+                            Length = line.Length -startOffsetBlockComment
+                        });
                     }
 
                     while (lineChanges.Count > 0)
@@ -163,6 +174,7 @@ namespace SqlBatchReader
                         var lc = lineChanges.Pop();
                         line = line.Remove(lc.Offset, lc.Length);
                     }
+                    startOffsetBlockComment = 0;
                 }
 
                 if (Config.OmitEmptyLines && line.IsEmpty()) continue;

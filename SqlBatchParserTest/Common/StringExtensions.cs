@@ -1,8 +1,13 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace SqlBatchReader.Common
+namespace SqlBatchParserTest.Common
 {
-    public static class StringExtensions
+    internal static class StringExtensions
     {
         public static string Trim(this string str, bool condition)
         {

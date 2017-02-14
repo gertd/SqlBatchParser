@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace SqlBatchReaderTest
+namespace SqlBatchParserTest
 {
     public class SqlBatchRegExTests
     {
@@ -15,7 +15,7 @@ namespace SqlBatchReaderTest
         [InlineData(8, "]", "]", @"rbracket", true)]
         public void SqlBatchRegExTests1(int id, string input, string expectedOutput, string groupname, bool expectedMatch)
         {
-            var regex = SqlBatchReader.SqlBatchReader.InitRegEx("GO");
+            var regex = SqlBatchParser.SqlBatchReader.InitRegEx("GO");
             var matches = regex.Matches(input);
 
             Assert.Equal(matches.Count, 1);

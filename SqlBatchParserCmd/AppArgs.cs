@@ -1,6 +1,6 @@
-using SqlBatchReaderCmd.Common;
+using SqlBatchParserCmd.Common;
 
-namespace SqlBatchReaderCmd
+namespace SqlBatchParserCmd
 {
     public sealed class AppArgs
     {
