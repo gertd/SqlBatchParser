@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>SqlBatchParser</title>
+    <authors>Gert Drapers</authors>
+    <owners>Gert Drapers</owners>
+    <licenseUrl>https://github.com/gertd/sqlbatchreader/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/gertd/sqlbatchreader</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>Built from git commit $commit$</releaseNotes>
+    <description>SQL Server Batch StreamReader</description>
+    <summary>SQL Server Batch StreamReader</summary>
+    <copyright>© Copyright 2017 Gert Drapers</copyright>
+    <tags>sql streamreader sqlcmd sqlserver</tags>
+    <dependencies>
+      <group targetFramework="net452">
+      </group>
+    </dependencies>
+  </metadata>
+
+  <files>
+    <file src="bin\$configuration$\$id$.dll" target="lib\net452\" />
+    <file src="bin\$configuration$\$id$.pdb" target="lib\net452\" />
+  </files>
+  
+</package>

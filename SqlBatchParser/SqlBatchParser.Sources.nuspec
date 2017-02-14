@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>SqlBatchParser.Sources</id>
+    <version>$version$</version>
+    <title>SqlBatchReader.Sources</title>
+    <authors>Gert Drapers</authors>
+    <owners>Gert Drapers</owners>
+    <licenseUrl>https://github.com/gertd/sqlbatchreader/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/gertd/sqlbatchreader</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>Built from git commit $commit$</releaseNotes>
+    <description>SQL Server Batch StreamReader</description>
+    <summary>SQL Server Batch StreamReader</summary>
+    <copyright>© Copyright 2017 Gert Drapers</copyright>
+    <tags>sql streamreader sqlcmd sqlserver</tags>
+  </metadata>
+
+  <files>
+    <file src="**\*.cs.pp" target="content\App_Packages\$id$.$version$" />
+  </files>
+
+</package>

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 
-namespace SqlBatchReaderCmd.Common
+namespace SqlBatchParserCmd.Common
 {
     public static class Helper
     {

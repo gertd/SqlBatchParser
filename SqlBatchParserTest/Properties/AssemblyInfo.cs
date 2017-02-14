@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SqlBatchReaderCmd")]
+[assembly: AssemblyTitle("SqlBatchParserTest")]
 [assembly: AssemblyDescription("https://github.com/gertd/SqlBatchReader")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SqlBatchReaderCmd")]
+[assembly: AssemblyProduct("SqlBatchParserTest")]
 [assembly: AssemblyCopyright("Copyright © 2017 Gert Drapers")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("cb6c0765-6009-4dd2-a370-a7af2429c5f3")]
+[assembly: Guid("45d85060-099a-44c7-a1c8-fa9b9c46c51d")]
 
 // Version information for an assembly consists of the following four values:
 //

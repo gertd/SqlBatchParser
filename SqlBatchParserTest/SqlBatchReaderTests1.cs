@@ -1,10 +1,10 @@
-﻿using SqlBatchReader;
-using SqlBatchReader.Common;
+﻿using SqlBatchParser;
+using SqlBatchParserTest.Common;
 using System;
 using System.Linq;
 using Xunit;
 
-namespace SqlBatchReaderTest
+namespace SqlBatchParserTest
 {
     public class SqlBatchReaderTests1
     {
@@ -22,7 +22,7 @@ namespace SqlBatchReaderTest
             const string input = @"-- inline comment";
             string output = @"" + Environment.NewLine;
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(1, batches.Length);
@@ -35,7 +35,7 @@ namespace SqlBatchReaderTest
             const string input = @"select @@version -- inline comment";
             string output = @"select @@version " + Environment.NewLine;
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -50,7 +50,7 @@ namespace SqlBatchReaderTest
             const string input = @"/* block comment */";
             string output = @"" + Environment.NewLine;
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -63,7 +63,7 @@ namespace SqlBatchReaderTest
             const string input = @"/* block comment */ after";
             string output = @" after" + Environment.NewLine;
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -76,7 +76,7 @@ namespace SqlBatchReaderTest
             const string input = @"before /* block comment */";
             string output = @"before " + Environment.NewLine;
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -90,7 +90,7 @@ namespace SqlBatchReaderTest
             string output = @"before  after" + Environment.NewLine;
 
             _config.TrimWhiteSpace = true;
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -113,7 +113,7 @@ select getdate()
  select getutcdate()
 ";
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -141,7 +141,7 @@ select 1
 select 1
 ";
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -167,7 +167,7 @@ select 0;
 select 1;
 ";
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -191,7 +191,7 @@ select 2;
 select 2;
 ";
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -231,7 +231,7 @@ select 2;
 select 3;
 ";
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -256,7 +256,7 @@ select 4
 gO
 ";
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(4, batches.Length);
@@ -280,7 +280,7 @@ go 1
 */
 
 ";
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -303,7 +303,7 @@ select getdate() as now
 
 ";
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -316,7 +316,7 @@ select getdate() as now
             const string input = @"/* GO */";
             string output = @"" + Environment.NewLine;
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -336,7 +336,7 @@ GO
 
 " + Environment.NewLine;
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
@@ -361,7 +361,7 @@ as
 select @@version, @p1, @p3
 ";
 
-            var reader = new SqlBatchReader.SqlBatchReader(input.ToStream(), _config);
+            var reader = new SqlBatchParser.SqlBatchReader(input.ToStream(), _config);
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
