@@ -365,7 +365,7 @@ select @@version, @p1, @p3
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
-            Assert.Equal(output, batches.First());
+			Assert.Equal(output.CanonicalizeCfLf(), batches.First().CanonicalizeCfLf());
         }
 
         #endregion

@@ -28,5 +28,10 @@ namespace SqlBatchParserTest.Common
             stream.Position = 0;
             return stream;
         }
+
+		public static string CanonicalizeCfLf(this string str)
+		{
+			return str.Replace("(?<!\r)\n", "\r\n");
+		}
     }
 }
