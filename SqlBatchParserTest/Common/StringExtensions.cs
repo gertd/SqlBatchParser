@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace SqlBatchParserTest.Common
 {
@@ -31,7 +32,7 @@ namespace SqlBatchParserTest.Common
 
 		public static string CanonicalizeCfLf(this string str)
 		{
-			return str.Replace("(?<!\r)\n", "\r\n");
+			return Regex.Replace(str, "(?<!\r)\n", "\r\n");
 		}
     }
 }

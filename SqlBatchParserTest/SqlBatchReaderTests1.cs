@@ -117,7 +117,7 @@ select getdate()
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
-            Assert.Equal(output, batches.First());
+			Assert.Equal(output.CanonicalizeCfLf(), batches.First().CanonicalizeCfLf());
         }
 
         [Fact(DisplayName = "BlockCommentTest6")]
@@ -145,7 +145,7 @@ select 1
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
-            Assert.Equal(output, batches.First());
+			Assert.Equal(output.CanonicalizeCfLf(), batches.First().CanonicalizeCfLf());
         }
 
         [Fact(DisplayName = "BlockCommentTest7")]
@@ -171,7 +171,7 @@ select 1;
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
-            Assert.Equal(output, batches.First());
+			Assert.Equal(output.CanonicalizeCfLf(), batches.First().CanonicalizeCfLf());
         }
 
         [Fact(DisplayName = "BlockCommentTest8")]
@@ -195,7 +195,7 @@ select 2;
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
-            Assert.Equal(output, batches.First());
+			Assert.Equal(output.CanonicalizeCfLf(), batches.First().CanonicalizeCfLf());
         }
 
         [Fact(DisplayName = "BlockCommentTest9")]
@@ -235,7 +235,7 @@ select 3;
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
-            Assert.Equal(output, batches.First());
+			Assert.Equal(output.CanonicalizeCfLf(), batches.First().CanonicalizeCfLf());
         }
 
         #endregion
@@ -307,7 +307,7 @@ select getdate() as now
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
-            Assert.Equal(output, batches.First());
+			Assert.Equal(output.CanonicalizeCfLf(), batches.First().CanonicalizeCfLf());
         }
 
         [Fact(DisplayName = "BatchDelimiterTest4")]
@@ -340,7 +340,7 @@ GO
             var batches = reader.Batches().ToArray();
 
             Assert.Equal(batches.Length, 1);
-            Assert.Equal(output, batches.First());
+			Assert.Equal(output.CanonicalizeCfLf(), batches.First().CanonicalizeCfLf());
         }
 
         [Fact(DisplayName = "BatchDelimiterTest6")]
